@@ -1,12 +1,13 @@
+let PlayerPoints = 0;
+let ComputerPoints = 0;
+let ComputerOption;
+let PlayerOption;
+
 function rps(PlayerNumber){
-    let winnertext; 
-    let PlayerPoints;
-    let ComputerPoints;
-    while((PlayerPoints != 5) && (ComputerPoints != 5))
-    {
+
+    if((PlayerPoints != 5) && (ComputerPoints != 5)){
         let placeholder = Math.floor((Math.random() * 3) + 1);
-        let ComputerOption;
-        let PlayerOption;
+
         console.log(placeholder);
         if(placeholder == 1){
             ComputerOption = "rock";
@@ -26,44 +27,54 @@ function rps(PlayerNumber){
         {
             PlayerOption = "scissors";
         }
-    
+
+    winchecker(PlayerOption, ComputerOption)
     }
-    if(PlayerPoints == 5){
-        return document.getElementById("ptext").innerHTML = "you won loser";
+    else{
+        if(PlayerPoints == 5){
+            document.getElementById("ptext").innerHTML = "you won loser";
+        }
+        else if(ComputerPoints == 5)
+        {
+            document.getElementById("ptext").innerHTML = "you lost cry";
+        }
+        
     }
-    else if(ComputerPoints == 5)
-    {
-        return document.getElementById("ptext").innerHTML = "you lost cry";
-    }
+  
 }
 
-function winchecker(PlayerOption, ComputerOption){
-    if(PlayerOption === ComputerOption){
+
+
+function winchecker(PlayerChoice, ComputerChoice){
+    console.log(PlayerChoice)
+    console.log(ComputerChoice)
+
+    if(PlayerChoice === ComputerOption){
         document.getElementById("ptext").innerHTML = "draw"
-    }else if((PlayerOption === "rock") && (ComputerOption === "paper"))
+    }else if((PlayerChoice === "rock") && (ComputerChoice === "paper"))
     {
         document.getElementById("ptext").innerHTML = "lost"
-        ComputerPoints += 1   
-    }else if((PlayerOption = "rock") && (ComputerOption = "scissors"))
+        ComputerPoints++  
+    }else if((PlayerChoice === "rock") && (ComputerChoice === "scissors"))
     {
         document.getElementById("ptext").innerHTML = "win"
-        PlayerPoints += 1   
-    }else if((PlayerOption = "paper") && (ComputerOption = "rock"))
+        PlayerPoints++  
+    }else if((PlayerChoice === "paper") && (ComputerChoice === "rock"))
     {
         document.getElementById("ptext").innerHTML = "win"
-        PlayerPoints += 1   
-    }else if((PlayerOption = "paper") && (ComputerOption = "scissors"))
+        PlayerPoints++ 
+    }else if((PlayerChoice === "paper") && (ComputerChoice === "scissors"))
     {
         document.getElementById("ptext").innerHTML = "lost"
-        ComputerPoints += 1   
-    }else if((PlayerOption = "scissors") && (ComputerOption = "paper"))
+        ComputerPoints++   
+    }else if((PlayerChoice === "scissors") && (ComputerChoice === "paper"))
     {
         document.getElementById("ptext").innerHTML = "win"
-        PlayerPoints += 1   
-    }else if((PlayerOption = "scissors") && (ComputerOption = "rock"))
+        PlayerPoints++  
+    }else if((PlayerChoice === "scissors") && (ComputerChoice === "rock"))
     {
         document.getElementById("ptext").innerHTML = "lost"
-        ComputerPoints += 1   
+        ComputerPoints++  
     }else{
         document.getElementById("ptext").innerHTML = "cry"
 
